@@ -83,7 +83,7 @@ jobs:
         shell: bash
         run: |
           cd target/release
-          tar czvf ../../poscan-consensus-${{ matrix.name }}.tar.gz poscan-consensus${{ matrix.suffix }}
+          tar czvf ../../poscan-consensus-${{ matrix.name }}.tar.gz poscan-consensus${{ matrix.suffix }} ./wbuild/poscan-runtime/poscan_runtime.wasm ./wbuild/poscan-runtime/poscan_runtime.compact.compressed.wasm
           cd -
 
       - name: Publish
