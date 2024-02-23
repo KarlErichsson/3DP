@@ -86,9 +86,15 @@ jobs:
           tar czvf ../../poscan-consensus-${{ matrix.name }}.tar.gz poscan-consensus${{ matrix.suffix }} ./wbuild/poscan-runtime/poscan_runtime.wasm ./wbuild/poscan-runtime/poscan_runtime.compact.compressed.wasm
           cd -
 
-      - name: Publish
-        uses: softprops/action-gh-release@v0.1.15
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
         with:
-          files: "poscan-consensus-*"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: poscan-consensus-artifacts
+          path: poscan-consensus-${{ matrix.name }}.tar.gz
+
+      # - name: Publish
+      #   uses: softprops/action-gh-release@v0.1.15
+      #   with:
+      #     files: "poscan-consensus-*"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
